@@ -1,4 +1,7 @@
 # Lab-2-POO
+# Raul Robles - 26919
+# Luis Garcia - 26547
+
 - 1. ¿Qué propiedades y métodos tendrá cada clase?
 Parque:
 Propiedades: Nombre, código de identificación, nombre del encargado, lista de puntos de acceso, lista de visitantes.
