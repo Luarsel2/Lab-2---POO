@@ -6,9 +6,7 @@ public class Main {
     private static Parque parqueActual;
 
     public static void main(String[] args) {
-        // Inicialización del parque al arrancar
         crearNuevoParque();
-
         int opcion = 0;
         do {
             mostrarMenu();
@@ -17,7 +15,6 @@ public class Main {
         } while (opcion != 13);
     }
 
-    // Método de lectura segura contra InputMismatchException
     private static int leerEntero(String mensaje) {
         int numero = 0;
         boolean valido = false;
@@ -25,11 +22,11 @@ public class Main {
             try {
                 System.out.print(mensaje);
                 numero = scanner.nextInt();
-                scanner.nextLine(); // Limpiar salto de línea del buffer
+                scanner.nextLine(); 
                 valido = true;
             } catch (InputMismatchException e) {
                 System.out.println("Error: Debe ingresar un número entero.");
-                scanner.nextLine(); // Limpiar entrada inválida
+                scanner.nextLine(); 
             }
         }
         return numero;
@@ -68,13 +65,13 @@ public class Main {
                 case 11: eliminarVisitante(); break;
                 case 12: mostrarReporte(); break;
                 case 13: System.out.println("Saliendo..."); break;
-                default: System.out.println("Opción no válida.");
+                default: System.out.println("Opcion no valida.");
             }
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         } finally {
             if (opcion != 13) {
-                System.out.println("Fin de la operación " + opcion);
+                System.out.println("Fin de la operacion " + opcion);
             }
         }
     }
@@ -83,23 +80,22 @@ public class Main {
         System.out.println("\n--- Datos del Parque ---");
         System.out.print("Nombre del parque: ");
         String nombre = scanner.nextLine();
-        System.out.print("Código: ");
+        System.out.print("Codigo: ");
         String codigo = scanner.nextLine();
         System.out.print("Encargado: ");
         String encargado = scanner.nextLine();
-
         parqueActual = new Parque(nombre, codigo, encargado);
     }
 
     private static void habilitarPunto() {
         int pos = leerEntero("Posición (0-4): ");
-        System.out.print("Código: ");
+        System.out.print("Codigo: ");
         String cod = scanner.nextLine();
         System.out.print("Nombre: ");
         String nom = scanner.nextLine();
-        System.out.print("Ubicación: ");
+        System.out.print("Ubicacion: ");
         String ubi = scanner.nextLine();
-        int cap = leerEntero("Capacidad máxima por hora: ");
+        int cap = leerEntero("Capacidad maxima por hora: ");
         System.out.print("Estado: ");
         String est = scanner.nextLine();
 
@@ -108,7 +104,7 @@ public class Main {
     }
 
     private static void consultarPuntoEspecifico() {
-        int pos = leerEntero("Posición a consultar: ");
+        int pos = leerEntero("Posicion a consultar: ");
         PuntoAcceso p = parqueActual.consultarPuntoAcceso(pos);
         if (p != null) {
             System.out.println(p.toString());
@@ -116,21 +112,20 @@ public class Main {
     }
 
     private static void modificarPunto() {
-        int pos = leerEntero("Posición a modificar: ");
+        int pos = leerEntero("Posicion a modificar: ");
         int cap = leerEntero("Nueva capacidad: ");
         System.out.print("Nuevo estado: ");
         String est = scanner.nextLine();
-
         parqueActual.modificarPuntoAcceso(pos, cap, est);
     }
 
     private static void cerrarPunto() {
-        int pos = leerEntero("Posición a cerrar: ");
+        int pos = leerEntero("Posicion a cerrar: ");
         parqueActual.cerrarPuntoAcceso(pos);
     }
 
     private static void registrarVisitante() {
-        System.out.print("Código de entrada: ");
+        System.out.print("Codigo de entrada: ");
         String cod = scanner.nextLine();
         System.out.print("Nombre: ");
         String nom = scanner.nextLine();
@@ -154,7 +149,7 @@ public class Main {
     }
 
     private static void modificarVisitante() {
-        System.out.print("Código del visitante a modificar: ");
+        System.out.print("Codigo del visitante a modificar: ");
         String cod = scanner.nextLine();
         System.out.print("Nuevo nombre: ");
         String nom = scanner.nextLine();
@@ -166,7 +161,7 @@ public class Main {
     }
 
     private static void eliminarVisitante() {
-        System.out.print("Código a eliminar: ");
+        System.out.print("Codigo a eliminar: ");
         String cod = scanner.nextLine();
         parqueActual.eliminarVisitante(cod);
     }
@@ -182,10 +177,10 @@ public class Main {
         System.out.println("Visitantes registrados: " + parqueActual.contarVisitantes());
 
         Visitante masPuntos = parqueActual.obtenerVisitanteMayorPuntos();
-        System.out.println("Visitante con más puntos: " + (masPuntos != null ? masPuntos.getNombre() : "Ninguno"));
+        System.out.println("Visitante con mas puntos: " + (masPuntos != null ? masPuntos.getNombre() : "Ninguno"));
 
         Visitante masAtracciones = parqueActual.obtenerVisitanteMasAtracciones();
-        System.out.println("Visitante con más atracciones: " + (masAtracciones != null ? masAtracciones.getNombre() : "Ninguno"));
+        System.out.println("Visitante con mas atracciones: " + (masAtracciones != null ? masAtracciones.getNombre() : "Ninguno"));
 
         System.out.println("Promedio de edad: " + parqueActual.calcularPromedioEdad());
     }
