@@ -1,4 +1,5 @@
 public class Visitante {
+<<<<<<< HEAD
     private String codigoEntrada;
     private String nombre;
     private int edad;
@@ -58,4 +59,6 @@ public class Visitante {
         }
         this.puntosAcumulados = puntosAcumulados;
     }
+}
+    
 }
